@@ -2,6 +2,7 @@ buildscript {
     ext {
         kotlinVersion = '1.2.51'
         springBootVersion = '2.0.3.RELEASE'
+        springCloudConnectorsVersion = '2.0.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -42,6 +43,8 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     compile('org.springframework.boot:spring-boot-starter-web')
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0")
+    compile("org.springframework.cloud:spring-cloud-spring-service-connector:${springCloudConnectorsVersion}")
+    compile("org.springframework.cloud:spring-cloud-cloudfoundry-connector:${springCloudConnectorsVersion}")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
@@ -50,3 +53,9 @@ test {
         exceptionFormat = 'full'
     }
 }
+
+test.environment([
+        "SPRING_PROFILES_ACTIVE": "cloud",
+        "VCAP_APPLICATION": "some long json object that contains app metadata.",
+        "VCAP_SERVICES": "{\"user-provided\": [{\"credentials\": {\"password\": \"pa55woRD\",\"url\": \"http://example.com\",\"username\": \"admin\"},\"label\": \"user-provided\",\"name\": \"my-service\",\"syslog_drain_url\": \"\",\"tags\": [],\"volume_mounts\": []},{\"credentials\": {\"password\": \"bar\",\"url\": \"http://example.com\",\"username\": \"foo\"},\"label\": \"user-provided\",\"name\": \"another-service\",\"syslog_drain_url\": \"\",\"tags\": [],\"volume_mounts\": []}]}",
+])

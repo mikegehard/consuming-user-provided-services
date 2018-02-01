@@ -58,3 +58,11 @@ in a Spring Boot application using Spring Cloud Connectors.
     You will get one of these "user-provided" entries for each bound user provided service.
     It is keyed off of the "name" attribute. This is OK because you can only bind a service
     once to an application.
+    
+## Using Spring Cloud Connectors
+
+The `v1` tag shows how you would manually extract information from the `VCAP_SERVICES` 
+environment variable.
+
+The `v2` tag shows how to use Spring Cloud Connectors to implement a 
+[custom service](http://cloud.spring.io/spring-cloud-connectors/spring-cloud-connectors.html#_adding_service_support).
