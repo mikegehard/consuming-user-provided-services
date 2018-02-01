@@ -41,6 +41,7 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
